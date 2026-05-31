@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantics MCQ Study Suite</title>
+  <!-- Google Fonts: Outfit (main) and Fira Code (monospaced phonetic symbols) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons for modern UI markers -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background decorative glowing blobs -->
+  <div class="bg-glow blob-1"></div>
+  <div class="bg-glow blob-2"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="logo-text">
+          <h1>Semantics <span class="accent-text">MCQ</span></h1>
+          <p>Linguistic Study Suite</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Tabbed Navigation Bar -->
+    <nav class="tabs-nav">
+      <div class="tabs-scroll-container">
+        <button class="tab-btn active" data-category="all">
+          <i class="fa-solid fa-house"></i>
+          <span>Welcome</span>
+        </button>
+        <button class="tab-btn" data-category="week1">
+          <span class="tab-badge">Part 1</span>
+          <span>Intro & Signs</span>
+        </button>
+        <button class="tab-btn" data-category="week2_3">
+          <span class="tab-badge">Part 2</span>
+          <span>Utterance & Prop</span>
+        </button>
+        <button class="tab-btn" data-category="week4_5">
+          <span class="tab-badge">Part 3</span>
+          <span>Sense & Ref</span>
+        </button>
+        <button class="tab-btn" data-category="week5_6">
+          <span class="tab-badge">Part 4</span>
+          <span>Lexical & Struct</span>
+        </button>
+        <button class="tab-btn" data-category="week6_8">
+          <span class="tab-badge">Part 5</span>
+          <span>Relations & Poly</span>
+        </button>
+        <button class="tab-btn" data-category="week9_10">
+          <span class="tab-badge">Part 6</span>
+          <span>Referring Exp</span>
+        </button>
+        <button class="tab-btn" data-category="week10_11">
+          <span class="tab-badge">Part 7</span>
+          <span>Predicates & Ent</span>
+        </button>
+        <button class="tab-btn random-tab" data-category="random">
+          <i class="fa-solid fa-shuffle"></i>
+          <span>Random Mix</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content Board -->
+    <main class="content-board">
+      
+      <!-- Welcome Panel -->
+      <section id="welcome-panel" class="panel active">
+        <div class="welcome-card card">
+          <div class="welcome-graphic">
+            <i class="fa-solid fa-book-open-reader"></i>
+          </div>
+          <h2>Welcome to the Semantics Study Suite</h2>
+          <p>
+            This interactive tool is designed to test and reinforce your knowledge of linguistic semantics. 
+            Select any tab above to focus on a specific part of the course, or challenge yourself with the 
+            <strong>Random Mix</strong> for a full review.
+          </p>
+          <div class="features-list">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-circle-info"></i></div>
+              <div class="feature-desc">
+                <h4>Choice-Specific Explanations</h4>
+                <p>Get immediate, course-based feedback explaining why an answer is correct or incorrect based on linguistic definitions.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-trophy"></i></div>
+              <div class="feature-desc">
+                <h4>Progress Tracking</h4>
+                <p>Monitor your performance with live stats, progress indicators, and an end-of-quiz score analysis dashboard.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+              <div class="feature-desc">
+                <h4>Interactive Design</h4>
+                <p>Designed with a premium slate-indigo visual system, including support for Light and Dark modes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="welcome-actions">
+            <button id="start-random-btn" class="btn btn-primary">
+              <i class="fa-solid fa-play"></i> Start Random Quiz
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz Panel -->
+      <section id="quiz-panel" class="panel">
+        
+        <!-- Quiz Status Bar -->
+        <div class="quiz-status-bar card">
+          <div class="status-meta">
+            <span id="quiz-topic" class="topic-tag">Part 1: Intro</span>
+            <div class="stats-counter">
+              <span class="stat correct-count"><i class="fa-solid fa-circle-check"></i> <span id="correct-score">0</span></span>
+              <span class="stat incorrect-count"><i class="fa-solid fa-circle-xmark"></i> <span id="incorrect-score">0</span></span>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-label">
+              <span>Progress</span>
+              <span id="progress-text">Question 1 of 10</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div id="progress-bar-fill" class="progress-bar-fill" style="width: 10%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Box -->
+        <div id="question-card" class="question-card card">
+          <div class="question-header">
+            <span class="question-number-tag">Q<span id="question-num">1</span></span>
+            <h3 id="question-text" class="question-title">Which of the following is the best example of an iconic sign?</h3>
+          </div>
+          
+          <div id="options-container" class="options-grid">
+            <!-- Options dynamically injected -->
+            <button class="option-btn" data-choice="A">
+              <span class="option-letter">A</span>
+              <span class="option-content">Option content placeholder</span>
+              <span class="option-status-icon"><i class="fa-solid fa-circle"></i></span>
+            </button>
+            <button class="option-btn" data-choice="B">
+              <span class="option-letter">B</span>
+              <span class="option-content">Option content placeholder</span>
+              <span class="option-status-icon"><i class="fa-solid fa-circle"></i></span>
+            </button>
+            <button class="option-btn" data-choice="C">
+              <span class="option-letter">C</span>
+              <span class="option-content">Option content placeholder</span>
+              <span class="option-status-icon"><i class="fa-solid fa-circle"></i></span>
+            </button>
+            <button class="option-btn" data-choice="D">
+              <span class="option-letter">D</span>
+              <span class="option-content">Option content placeholder</span>
+              <span class="option-status-icon"><i class="fa-solid fa-circle"></i></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Explanation Container (slides down/in) -->
+        <div id="explanation-card" class="explanation-card card hide">
+          <div class="explanation-header">
+            <div class="explanation-icon">
+              <i id="expl-icon-class" class="fa-solid fa-circle-info"></i>
+            </div>
+            <h4 id="explanation-title">Explanation</h4>
+          </div>
+          <p id="explanation-content">This is a dynamic explanation text injected from the database based on your choice.</p>
+        </div>
+
+        <!-- Navigation Actions -->
+        <div class="quiz-actions">
+          <button id="next-btn" class="btn btn-primary" disabled>
+            <span>Next Question</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- Results Panel -->
+      <section id="results-panel" class="panel">
+        <div class="results-card card">
+          <div class="results-header">
+            <div id="score-badge" class="score-badge">
+              <span id="final-percentage">80%</span>
+              <span class="badge-label">Score</span>
+            </div>
+            <h2 id="result-headline">Great job, apprentice!</h2>
+            <p id="result-description">You have completed the quiz. Here is a summary of your performance.</p>
+          </div>
+
+          <div class="results-summary-grid">
+            <div class="summary-box">
+              <span class="summary-val" id="res-total-questions">10</span>
+              <span class="summary-lbl">Total Questions</span>
+            </div>
+            <div class="summary-box correct-box">
+              <span class="summary-val" id="res-correct-count">8</span>
+              <span class="summary-lbl">Correct</span>
+            </div>
+            <div class="summary-box incorrect-box">
+              <span class="summary-val" id="res-incorrect-count">2</span>
+              <span class="summary-lbl">Incorrect</span>
+            </div>
+          </div>
+
+          <!-- Review Section -->
+          <div class="review-section">
+            <h3>Review Questions</h3>
+            <div id="review-list" class="review-list">
+              <!-- Dynamically populated review cards -->
+            </div>
+          </div>
+
+          <div class="results-actions">
+            <button id="restart-btn" class="btn btn-primary">
+              <i class="fa-solid fa-rotate-right"></i> Retake Quiz
+            </button>
+            <button id="back-home-btn" class="btn btn-secondary">
+              <i class="fa-solid fa-house"></i> Home
+            </button>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 Semantics MCQ Trainer. Content based on Course Slides.</p>
+    </footer>
+  </div>
+
+  <!-- Script Imports -->
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
